@@ -16,15 +16,13 @@ export class MenuListComponent implements OnInit {
 
   }
 
-  @Output() finializeOrderEvent = new EventEmitter<Dish>();
-
   ngOnInit(){
+    this.dataService.currentOrderDishes.subscribe(orderedDishes => this.orders = orderedDishes)
     return this.dataService.getDishes()
     .subscribe(data => this.dishes = data); 
   }
 
   addToOrder(dish){
     this.orders.push(dish);
-    this.finializeOrderEvent.emit();
   }
 }

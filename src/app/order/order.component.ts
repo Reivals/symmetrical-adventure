@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Dish } from '../models/dish.model';
 import { DataService } from '../data.service';
 
@@ -15,12 +15,10 @@ export class OrderComponent implements OnInit {
   }
 
   ngOnInit(){
-    return this.dataService.getDishes()
-    .subscribe(data => this.orderedDishes = data); 
+    this.dataService.currentOrderDishes.subscribe(orderedDishes => this.orderedDishes = orderedDishes)
   }
 
-  recieveMessage($event){
-    this.orderedDishes = $event;
+  finalizeOrders(){
     console.log(this.orderedDishes);
   }
   

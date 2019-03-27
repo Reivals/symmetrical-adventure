@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="jumbotron">
+      <h1>Restaurant menu</h1>
+    </div>
+  
+    <div *ngFor='let dish of dishes' style="text-align:center">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h2> {{dish.dishName}}</h2>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div>
+          <p *ngFor='let ingredient of dish.ingredients' style="text-align:center">{{ingredient.ingredientName}}</p>
+        </div>
+      </mat-expansion-panel>
+      <button mat-raised-button (click)="addToOrder(dish)">Add to order</button>
+      </div>
+
+
+      <button mat-raised-button routerLink='/order'>Finalize order</button>
+  </div>

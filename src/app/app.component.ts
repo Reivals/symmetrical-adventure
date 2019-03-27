@@ -1,7 +1,7 @@
 import { Component, OnInit  } from '@angular/core';
 
 import { ActivatedRoute, Router } from '@angular/router';
-import { Dish } from './dish.model';
+import { Dish } from './models/dish.model';
 import { DataService } from './data.service';
 
 @Component({
@@ -9,17 +9,9 @@ import { DataService } from './data.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent{
 
-  dishes$: Dish[];
-  constructor(private dataService: DataService) {
 
-  }
-
-  ngOnInit(){
-    return this.dataService.getDishes()
-    .subscribe(data => this.dishes$ = data); 
-  }
   
 
 

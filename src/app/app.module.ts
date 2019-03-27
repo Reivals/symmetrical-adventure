@@ -9,11 +9,13 @@ import { DataService } from './data.service';
 import { OrderComponent } from './order/order.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatExpansionModule} from '@angular/material';
+import { MenuListComponent } from './menu-list/menu-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    OrderComponent
+    OrderComponent,
+    MenuListComponent
   ],
   imports: [
     BrowserModule,

@@ -1,35 +1,22 @@
 <div class="container">
-  <div class="jumbotron">
-    <h1>Restaurant menu</h1>
-  </div>
-
-  <ul class="dishesList">
-    <li *ngFor='let dish of dishes'>
-      <mat-expansion-panel class="singleDish">
+    <div class="jumbotron">
+      <h1>Restaurant menu</h1>
+    </div>
+  
+    <div *ngFor='let dish of dishes' style="text-align:center">
+      <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <span class="badge" id="badgeId">{{dish.id}}</span>
             <h2> {{dish.dishName}}</h2>
           </mat-panel-title>
         </mat-expansion-panel-header>
         <div>
-          Ingredients:
+          <p *ngFor='let ingredient of dish.ingredients' style="text-align:center">{{ingredient.ingredientName}}</p>
         </div>
-        <ng-container class="row" *ngFor='let ingredient of dish.ingredients; let i = index'>
-          <ng-container *ngIf="i < dish.ingredients.length - 1; else end">
-              {{ingredient.ingredientName}},
-          </ng-container>
-          <ng-template #end>
-              {{ingredient.ingredientName}}.
-          </ng-template>
-        </ng-container>
-        <button class="orderButton" id="buttonId" mat-raised-button (click)="addToOrder(dish)">Add to order</button>
-        <br/><br/>
-        <button class="orderButton" id="buttonId" mat-raised-button (click)="removeFromOrder(dish)">Remove from order</button>
-        <div class="countText">Count: 0</div>
       </mat-expansion-panel>
-    </li>
-  </ul>
+      <button mat-raised-button (click)="addToOrder(dish)">Add to order</button>
+      </div>
 
-  <button mat-raised-button routerLink='/order'>Finalize order</button>
-</div>
+
+      <button mat-raised-button routerLink='/order'>Finalize order</button>
+  </div>

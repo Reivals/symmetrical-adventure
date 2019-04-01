@@ -14,13 +14,13 @@ export class OrderComponent implements OnInit {
 
   }
 
-  ngOnInit() {
-    this.dataService.currentOrderDishes.subscribe(orderedDishes => this.orderedDishes = orderedDishes);
+  ngOnInit(){
+    this.dataService.currentOrderDishes.subscribe(orderedDishes => this.orderedDishes = orderedDishes)
   }
 
-  finalizeOrders() {
+  finalizeOrders(){
     console.log(this.orderedDishes);
   }
-
+  
 
 }

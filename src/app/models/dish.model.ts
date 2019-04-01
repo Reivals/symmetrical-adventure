@@ -4,7 +4,12 @@ export class Dish {
 
     id: number;
     dishName: string;
-    ingredients: Ingredient[]; 
-    
+    ingredients: Ingredient[];
+
+    constructor(id: number, dishName: string, ingredients: Ingredient[]) {
+        this.id = id;
+        this.dishName = dishName;
+        this.ingredients = ingredients;
+    }
 
 }

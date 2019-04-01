@@ -3,6 +3,7 @@ import { DataService } from '../data.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Dish } from '../models/dish.model';
+import { Ingredient } from '../models/ingredient.model';
 @Component({
   selector: 'menuList',
   templateUrl: './menu-list.component.html',
@@ -10,19 +11,24 @@ import { Dish } from '../models/dish.model';
 })
 export class MenuListComponent implements OnInit {
 
-  dishes: Dish[] = [];
+  dishes: Dish[] = [new Dish(1, 'Tofucznica', [new Ingredient('Tofu', 150, 'Warzywo'), new Ingredient('Tofu', 150, 'Warzywo'), new Ingredient('Tofu', 150, 'Warzywo')]),
+  new Dish(2, 'Tofucznica', [new Ingredient('Tofu', 150, 'Warzywo'), new Ingredient('Tofu', 150, 'Warzywo'), new Ingredient('Tofu', 150, 'Warzywo')]),
+  new Dish(3, 'Tofucznica', [new Ingredient('Tofu', 150, 'Warzywo'), new Ingredient('Tofu', 150, 'Warzywo'), new Ingredient('Tofu', 150, 'Warzywo')]),
+  new Dish(4, 'Tofucznica', [new Ingredient('Tofu', 150, 'Warzywo'), new Ingredient('Tofu', 150, 'Warzywo'), new Ingredient('Tofu', 150, 'Warzywo')]),
+  new Dish(5, 'Tofucznica', [new Ingredient('Tofu', 150, 'Warzywo'), new Ingredient('Tofu', 150, 'Warzywo'), new Ingredient('Tofu', 150, 'Warzywo')])];
   orders: Dish[] = [];
-  constructor(private dataService: DataService, private router:Router) {
-
+  realOrders: [Dish, number][] = [];
+  constructor(private dataService: DataService, private router: Router) {
+    
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.dataService.currentOrderDishes.subscribe(orderedDishes => this.orders = orderedDishes)
     return this.dataService.getDishes()
-    .subscribe(data => this.dishes = data); 
+      .subscribe(data => this.dishes = data);
   }
 
-  addToOrder(dish){
+  addToOrder(dish) {
     this.orders.push(dish);
   }
 }

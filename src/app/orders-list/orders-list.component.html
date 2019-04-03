@@ -6,13 +6,6 @@
     <input ngModel required minlength="3" name="clientLastName" id ="clientLastName" type="text" [(ngModel)]="clientLastName"/>
     <label for="tableNumber" >Table number: </label>
     <input ngModel required minlength="1" name="tableNumber" id ="tableNumber" type="number" [(ngModel)]="tableNumber"/>
-    <div>
-      <label for="orderedDishes">Ordered Dishes: </label>
-      <li *ngFor="let dish of orderedDishes">
-        <span class="badge">{{dish.dishName}}</span>
-      </li>
-    </div>
-    
   </div>
-  <button class="btn btn-primary" (click)=finalizeOrders()>Send new order</button>
+  <button class="btn btn-primary" (click)=displayOrders()>Show my orders</button>
 </form>

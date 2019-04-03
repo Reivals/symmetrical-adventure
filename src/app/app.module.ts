@@ -10,19 +10,21 @@ import { OrderComponent } from './order/order.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatExpansionModule} from '@angular/material';
 import { MenuListComponent } from './menu-list/menu-list.component';
-
+import { OrdersListComponent } from './orders-list/orders-list.component';
 @NgModule({
   declarations: [
     AppComponent,
     OrderComponent,
-    MenuListComponent
+    MenuListComponent,
+    OrdersListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    FormsModule,
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

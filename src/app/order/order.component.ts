@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Dish } from '../models/dish.model';
 import { DataService } from '../data.service';
+import { SingleOrder } from '../models/singleOrder.model';
 
 @Component({
   selector: 'app-order',
@@ -10,6 +11,9 @@ import { DataService } from '../data.service';
 export class OrderComponent implements OnInit {
 
   orderedDishes: Dish[];
+  clientFirstName: string;
+  clientLastName: string;
+  tableNumber: number;
   constructor(private dataService: DataService) {
 
   }
@@ -19,7 +23,9 @@ export class OrderComponent implements OnInit {
   }
 
   finalizeOrders(){
-    console.log(this.orderedDishes);
+    
+    this.dataService.createSingleOrder(this.clientFirstName, this.clientLastName, this.tableNumber, this.orderedDishes);
+    console.log(this.clientFirstName);
   }
   
 

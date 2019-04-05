@@ -45,7 +45,11 @@ export class DataService {
   }
 
   getClientOrders(clientName, clientSurname, tableNumber){
-      return this._http.get<Dish[]>(this.getClientOrderUrl+'/'+clientName+'/'+clientSurname+'/'+tableNumber);
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'});
+  let options = { headers: headers };
+      return this._http.get<SingleOrder>(this.getClientOrderUrl+'/'+clientName+'/'+clientSurname+'/'+tableNumber, options);
   }
+
 
 }

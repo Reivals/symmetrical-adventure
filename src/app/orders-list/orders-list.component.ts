@@ -11,22 +11,26 @@ export class OrdersListComponent implements OnInit {
   clientFirstName : string;
   clientLastName : string;
   tableNumber : number;
-  clientOrder : SingleOrder
+  clientOrder : SingleOrder;
 
   constructor(private dataService: DataService) {
-
+  
   }
 
   ngOnInit() {
   }
 
   displayOrders(){
-    this.dataService.getClientOrders(this.clientFirstName, this.clientLastName, this.tableNumber);
+
+    return this.dataService.getClientOrders(this.clientFirstName, this.clientLastName, this.tableNumber)
+    .subscribe(data => {
+      this.clientOrder = data; 
+    });
   }
 
   editField: string;
   personList: Array<any> = [
-    { id: 1, name: 'Aurelia Vega', age: 30, companyName: 'Deepends', country: 'Spain', city: 'Madrid' },
+    { id: 1, name: 'xDDD', age: 30, companyName: 'Deepends', country: 'Spain', city: 'Madrid' },
     { id: 2, name: 'Guerra Cortez', age: 45, companyName: 'Insectus', country: 'USA', city: 'San Francisco' },
     { id: 3, name: 'Guadalupe House', age: 26, companyName: 'Isotronic', country: 'Germany', city: 'Frankfurt am Main' },
     { id: 4, name: 'Aurelia Vega', age: 30, companyName: 'Deepends', country: 'Spain', city: 'Madrid' },

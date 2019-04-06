@@ -11,6 +11,8 @@ export class DataService {
   getAllDishesUrl = 'http://localhost:8080/api/getAllDishes';
   createOrderUrl = 'http://localhost:8080/api/createNewOrder'
   getClientOrderUrl = 'http://localhost:8080/api/getClientOrder'
+  removeDishFromOrderUrl = 'http://localhost:8080/api/removeDishFromOrder'
+  modifySingleOrderUrl = 'http://localhost:8080/api/modifySingleOrder'
 
   private orderedDishes = new BehaviorSubject<Dish[]>([]);
   currentOrderDishes = this.orderedDishes.asObservable();
@@ -49,6 +51,19 @@ export class DataService {
       'Content-Type': 'application/json'});
   let options = { headers: headers };
       return this._http.get<SingleOrder>(this.getClientOrderUrl+'/'+clientName+'/'+clientSurname+'/'+tableNumber, options);
+  }
+
+  removeDishFromClientOrder(id : number, dish: Dish){
+      console.log(this.removeDishFromOrderUrl+'/'+id+'/'+dish.id);
+      return this._http.delete(this.removeDishFromOrderUrl+'/'+id+'/'+dish.id);
+  }
+
+  modifySingleOrder(singleOrder : SingleOrder){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'});
+  let options = { headers: headers };
+    return this._http.put(this.modifySingleOrderUrl, singleOrder)
+    
   }
 
 

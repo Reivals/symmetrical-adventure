@@ -13,35 +13,31 @@
 
 <!-- Editable table -->
 <div ng-show="false" class="ng-hide"> <!-- Nie wiem jak schowac to gowno i otworzyc po kliknieciu przycisku-->
-  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Editable table</h3>
+  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Your orders</h3>
   <div class="card-body">
     <div id="table" class="table-editable">
       <span class="table-add float-right mb-3 mr-2">
       </span>
       <table class="table table-bordered table-responsive-md table-striped text-center">
         <tr>
-          <th class="text-center">Person Name</th>
-          <th class="text-center">Age</th>
-          <th class="text-center">Company Name</th>
-          <th class="text-center">Country</th>
-          <th class="text-center">City</th>
+          <th class="text-center">Nazwa dania</th>
+          <th class="text-center">Skladniki</th>
+          <th class="text-center">Typ</th>
+          <th class="text-center">Cena</th>
           <th class="text-center">Remove</th>
         </tr>
-        <tr *ngFor="let person of personList; let id = index">
+        <tr *ngFor="let dish of clientOrder.dishList; let id = index">
           <td>
-            <span (keyup)="changeValue(id, 'name', $event)" (blur)="updateList(id, 'name', $event)" contenteditable="true">{{person.name}}</span>
+            <span>{{dish.dishName}}</span>
           </td>
           <td>
-            <span contenteditable="true" (keyup)="changeValue(id, 'age', $event)" (blur)="updateList(id, 'age', $event)">{{person.age}}</span>
+            <span>{{ingredientName}}</span>
           </td>
           <td>
-            <span contenteditable="true" (keyup)="changeValue(id, 'companyName', $event)" (blur)="updateList(id, 'companyName', $event)">{{person.companyName}}</span>
+            <span>{{dish.type}}</span>
           </td>
           <td>
-            <span contenteditable="true" (keyup)="changeValue(id, 'country', $event)" (blur)="updateList(id, 'country', $event)">{{person.country}}</span>
-          </td>
-          <td>
-            <span contenteditable="true" (keyup)="changeValue(id, 'city', $event)" (blur)="updateList(id, 'city', $event)">{{person.city}}</span>
+            <span>{{dish.cost}}</span>
           </td>
           <td>
             <span class="table-remove">
@@ -51,6 +47,16 @@
         </tr>
       </table>
     </div>
+  </div>
+  <div>
+    <select [(ngModel)]="selectedOption" (change)="setSelectedOption($event.target.value)">
+      <option *ngFor='let dish of avaliableDishes' ngDefaultControl>{{dish.dishName}}</option>
+    </select>
+   <!--<p>{{dish.dishName}}</p>-->
+  </div>
+  <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" (click)="addNewDish()">Add new dish</button>
+  <div>
+  <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" (click)="addNewDish()">Modify order</button>
   </div>
 </div>
 <!-- Editable table -->

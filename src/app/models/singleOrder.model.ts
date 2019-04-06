@@ -6,5 +6,6 @@ export class SingleOrder{
     clientFirstName: string;
     clientLastName: string;
     tableNumber: number;
+    id: number;
 
 }

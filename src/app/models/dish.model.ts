@@ -5,4 +5,5 @@ export class Dish {
     dishName: string;
     ingredients: Ingredient[]; 
     type: string;
+    cost: number;
 }

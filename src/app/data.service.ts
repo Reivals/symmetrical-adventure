@@ -39,7 +39,7 @@ export class DataService {
       dishList : dishList
     }), options).subscribe(
     data => {
-      alert('ok');
+      alert('Order was created succesfully!');
     },
     error => {
       console.log("sth went wrong");
@@ -62,7 +62,7 @@ export class DataService {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'});
   let options = { headers: headers };
-    return this._http.put(this.modifySingleOrderUrl, singleOrder)
+    return this._http.put(this.modifySingleOrderUrl, singleOrder);
     
   }
 

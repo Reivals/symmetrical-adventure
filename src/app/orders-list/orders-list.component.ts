@@ -28,9 +28,12 @@ export class OrdersListComponent implements OnInit {
 
   displayOrders(){
     return this.dataService.getClientOrders(this.clientFirstName, this.clientLastName, this.tableNumber)
-    .subscribe(data => {
-      this.clientOrder = data; 
-    });
+    .subscribe(response => {
+      this.clientOrder = response; 
+    }, error => { // second parameter is to listen for error
+      console.log("Invalid data passed");
+      alert("There is no such order!");
+  });
   }
 
   remove(id: any) {
@@ -40,14 +43,17 @@ export class OrdersListComponent implements OnInit {
 
   addNewDish(){
     this.clientOrder.dishList.push(this.selectedOption);
-    this.dataService.modifySingleOrder(this.clientOrder).subscribe();
+
   }
 
   setSelectedOption(dish : string){
      this.selectedOption = this.avaliableDishes.filter(function(item) {
       return item.dishName === dish;
     })[0];
-    
+  }
+
+  modifyClientSingleOrder(){
+    this.dataService.modifySingleOrder(this.clientOrder).subscribe();
   }
 
 }

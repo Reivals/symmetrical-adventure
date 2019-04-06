@@ -10,8 +10,6 @@
   <button class="btn btn-primary" (click)=displayOrders()>Show my orders</button>
 </form>
 
-
-<!-- Editable table -->
 <div ng-show="false" class="ng-hide"> <!-- Nie wiem jak schowac to gowno i otworzyc po kliknieciu przycisku-->
   <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Your orders</h3>
   <div class="card-body">
@@ -49,14 +47,13 @@
     </div>
   </div>
   <div>
-    <select [(ngModel)]="selectedOption" (change)="setSelectedOption($event.target.value)">
-      <option *ngFor='let dish of avaliableDishes' ngDefaultControl>{{dish.dishName}}</option>
+    <select  (change)="setSelectedOption($event.target.value)">
+      <option disabled selected value> -- select an option -- </option>
+      <option *ngFor='let dish of avaliableDishes'>{{dish.dishName}}</option>
     </select>
-   <!--<p>{{dish.dishName}}</p>-->
   </div>
   <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" (click)="addNewDish()">Add new dish</button>
   <div>
-  <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" (click)="addNewDish()">Modify order</button>
+  <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" (click)="modifyClientSingleOrder()">Modify order</button>
   </div>
 </div>
-<!-- Editable table -->

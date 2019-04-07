@@ -25,7 +25,6 @@ export class OrderComponent implements OnInit {
   finalizeOrders(){
     
     this.dataService.createSingleOrder(this.clientFirstName, this.clientLastName, this.tableNumber, this.orderedDishes);
-    console.log(this.clientFirstName);
   }
   
 

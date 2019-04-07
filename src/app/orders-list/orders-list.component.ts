@@ -37,8 +37,10 @@ export class OrdersListComponent implements OnInit {
   }
 
   remove(id: any) {
-    this.clientOrder.dishList.splice(id, 1);
+    console.log(id);
+    console.log(this.clientOrder.dishList[id]);
     this.dataService.removeDishFromClientOrder(this.clientOrder.id, this.clientOrder.dishList[id]).subscribe();
+    this.clientOrder.dishList.splice(id, 1);
   }
 
   addNewDish(){
@@ -54,6 +56,7 @@ export class OrdersListComponent implements OnInit {
 
   modifyClientSingleOrder(){
     this.dataService.modifySingleOrder(this.clientOrder).subscribe();
+    alert('Your order was succesfully modified!');
   }
 
 }

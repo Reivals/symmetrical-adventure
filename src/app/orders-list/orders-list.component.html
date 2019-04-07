@@ -52,8 +52,11 @@
       <option *ngFor='let dish of avaliableDishes'>{{dish.dishName}}</option>
     </select>
   </div>
-  <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" (click)="addNewDish()">Add new dish</button>
+  <button type="button" class="btn btn-primary" (click)="addNewDish()">Add new dish</button>
   <div>
-  <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" (click)="modifyClientSingleOrder()">Modify order</button>
+  <button type="button" class="btn btn-primary" (click)="modifyClientSingleOrder()">Modify order</button>
   </div>
+  <div>
+    <button type="button" class="btn btn-primary" routerLink='/'>Go back</button>
+    </div>
 </div>

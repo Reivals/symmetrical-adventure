@@ -25,7 +25,8 @@ import { DishCreateComponent } from './dish-create/dish-create.component';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    FormsModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

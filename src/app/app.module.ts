@@ -10,23 +10,15 @@ import { OrderComponent } from './order/order.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatExpansionModule} from '@angular/material';
 import { MenuListComponent } from './menu-list/menu-list.component';
-<<<<<<< Updated upstream
-
-=======
 import { OrdersListComponent } from './orders-list/orders-list.component';
 import { DishCreateComponent } from './dish-create/dish-create.component';
->>>>>>> Stashed changes
 @NgModule({
   declarations: [
     AppComponent,
     OrderComponent,
-<<<<<<< Updated upstream
-    MenuListComponent
-=======
     MenuListComponent,
     OrdersListComponent,
     DishCreateComponent
->>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,

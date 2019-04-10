@@ -1,0 +1,28 @@
+.input-field {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    max-width: 350px;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.header {
+    margin-top: 10px;
+}
+
+.dishInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.list {
+    list-style-type: decimal;
+}
+
+.btn {
+    display: block;
+    margin: auto;
+}

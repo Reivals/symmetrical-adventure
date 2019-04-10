@@ -4,6 +4,7 @@ import { Dish } from './models/dish.model';
 import { BehaviorSubject } from 'rxjs';
 import { SingleOrder } from './models/singleOrder.model';
 import { HttpHeaders } from '@angular/common/http';
+import { Ingredient } from './models/ingredient.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,6 +14,7 @@ export class DataService {
   getClientOrderUrl = 'http://localhost:8080/api/getClientOrder'
   removeDishFromOrderUrl = 'http://localhost:8080/api/removeDishFromOrder'
   modifySingleOrderUrl = 'http://localhost:8080/api/modifySingleOrder'
+  createNewDishUrl = 'http://localhost:8080/dictionaryApi/createDish'
 
   private orderedDishes = new BehaviorSubject<Dish[]>([]);
   currentOrderDishes = this.orderedDishes.asObservable();
@@ -64,6 +66,20 @@ export class DataService {
   let options = { headers: headers };
     return this._http.put(this.modifySingleOrderUrl, singleOrder);
     
+  }
+
+  createNewDish(dishName: string, cost: number, type: number, ingredients: Ingredient[]) {
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    const options = {headers};
+    this._http.post(this.createNewDishUrl, JSON.stringify({
+      dishName,
+      cost,
+      type,
+      ingredients
+    }), options).subscribe(
+      data => alert('Dish has been succesfully created!'),
+      error => console.log('An error has occurred while creating a dish!')
+    );
   }
 
 

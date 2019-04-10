@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1>New dish</h1>
+  </div>
+  <form>
+    <h3 class="header dishInfo">
+      Dish name:
+      <input class="input-field" ngModel name="dishName" required minlength="3" [(ngModel)]="dishName" /><br />
+      Dish type:
+      <select id="selectId" class="input-field" ngModel name="type" required [(ngModel)]="type"><br />
+        <option value="0">Main course</option>
+        <option value="1">Soup</option>
+        <option value="2">Dessert</option>
+        <option value="3">Salad</option>
+        <option value="4">Hot drink</option>
+        <option value="5">Cold drink</option>
+      </select><br />
+      Dish cost:
+      <input class="input-field" type="number" ngModel name="cost" required minlength="1" [(ngModel)]="cost" /><br />
+    </h3>
+    <h3 class="header">
+      Ingredients:
+    </h3>
+    <ul class="list">
+      <li>
+        Ingredient name:
+        <input class="input-field" ngModel name="ingredientName" required minlength="3"
+          [(ngModel)]="ingredients[0].ingredientName" />
+        Calories:
+        <input class="input-field" type="number" ngModel name="calories" required minlength="1"
+          [(ngModel)]="ingredients[0].calories" />
+        <button id="firstButtonId" (click)="addFirstListItem()">+</button>
+      </li>
+      <li *ngFor="let i of ingCount">
+        Ingredient name:
+        <input class="input-field" ngModel name="ingredientName" required minlength="3"
+          [(ngModel)]="ingredients[i+1].ingredientName" />
+        Calories:
+        <input class="input-field" type="number" ngModel name="calories" required minlength="1"
+          [(ngModel)]="ingredients[i+1].calories" />
+        <button (click)="addListItem()" [attr.id]="i">+</button>
+        <button (click)="removeListItem()" [attr.id]="'minus' + i">-</button>
+      </li>
+    </ul>
+    <button class="btn btn-primary" (click)="addNewDish()" routerLink="/">
+      Add new dish
+    </button>
+  </form>
+</div>

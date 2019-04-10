@@ -11,12 +11,14 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatExpansionModule} from '@angular/material';
 import { MenuListComponent } from './menu-list/menu-list.component';
 import { OrdersListComponent } from './orders-list/orders-list.component';
+import { DishCreateComponent } from './dish-create/dish-create.component';
 @NgModule({
   declarations: [
     AppComponent,
     OrderComponent,
     MenuListComponent,
-    OrdersListComponent
+    OrdersListComponent,
+    DishCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +26,7 @@ import { OrdersListComponent } from './orders-list/orders-list.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MatExpansionModule,
-    FormsModule,
+    FormsModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

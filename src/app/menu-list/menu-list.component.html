@@ -4,7 +4,7 @@
     </div>
   
     <ul class="dishesList">
-      <li *ngFor='let dish of dishes'>
+      <li *ngFor='let dish of dishes; let j = index'>
         <mat-expansion-panel class="singleDish">
           <mat-expansion-panel-header>
             <mat-panel-title>
@@ -23,11 +23,14 @@
                 {{ingredient.ingredientName}}.
             </ng-template>
           </ng-container>
-          <button class="orderButton" id="buttonId" mat-raised-button (click)="addToOrder(dish)">Add to order</button>
+          <button class="orderButton" id="buttonId" mat-raised-button (click)="addToOrder(dish, j)">Add to order</button>
+          <br/><br/>
+          <button class="orderButton" id="buttonId" mat-raised-button (click)="removeFromOrder(dish, j)">Remove from order</button>
+          <div class="countText">Count: {{dishCount[j]}}</div>
         </mat-expansion-panel>
       </li>
     </ul>
-  
-    <button mat-raised-button class="btn btn-primary" routerLink='/order'>Finalize order</button>
-    <button mat-raised-button class="btn btn-primary" routerLink='/orderModification'>Manage orders</button>
+    <button mat-raised-button routerLink='/order'>Finalize order</button>
+    <button mat-raised-button routerLink='/orderModification'>Manage orders</button>
+    <button mat-raised-button routerLink='/newDish'>New dish</button>
   </div>

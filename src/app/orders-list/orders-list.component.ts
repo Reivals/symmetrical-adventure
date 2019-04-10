@@ -16,9 +16,7 @@ export class OrdersListComponent implements OnInit {
   avaliableDishes: Dish[] = [];
   selectedOption: Dish;
 
-  constructor(private dataService: DataService) {
-  
-  }
+  constructor(private dataService: DataService) {}
 
   ngOnInit() {
     this.clientOrder.dishList = [];
@@ -30,7 +28,7 @@ export class OrdersListComponent implements OnInit {
     return this.dataService.getClientOrders(this.clientFirstName, this.clientLastName, this.tableNumber)
     .subscribe(response => {
       this.clientOrder = response; 
-    }, error => { // second parameter is to listen for error
+    }, error => {
       console.log("Invalid data passed");
       alert("There is no such order!");
   });
@@ -44,7 +42,15 @@ export class OrdersListComponent implements OnInit {
   }
 
   addNewDish(){
-    this.clientOrder.dishList.push(this.selectedOption);
+    if(this.clientOrder.id != null){
+      if(this.selectedOption != null){
+        this.clientOrder.dishList.push(this.selectedOption);
+      } else {
+        alert("You haven't selected new type of dish!")
+      }
+    } else {
+      alert("You haven't select any order yet!")
+    }
 
   }
 

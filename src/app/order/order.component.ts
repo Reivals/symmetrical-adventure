@@ -14,16 +14,13 @@ export class OrderComponent implements OnInit {
   clientFirstName: string;
   clientLastName: string;
   tableNumber: number;
-  constructor(private dataService: DataService) {
-
-  }
+  constructor(private dataService: DataService) {}
 
   ngOnInit(){
     this.dataService.currentOrderDishes.subscribe(orderedDishes => this.orderedDishes = orderedDishes)
   }
 
   finalizeOrders(){
-    
     this.dataService.createSingleOrder(this.clientFirstName, this.clientLastName, this.tableNumber, this.orderedDishes);
   }
   

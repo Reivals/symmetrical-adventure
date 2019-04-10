@@ -1,16 +1,24 @@
 <form>
   <div class="form-group">
-    <label for="clientFirstName"  >Client first name: </label>
-    <input ngModel required minlength="3" name="clientFirstName" id ="clientFirstName" type="text" [(ngModel)]="clientFirstName"/>
-    <label for="clientLastName" >Client last name: </label>
-    <input ngModel required minlength="3" name="clientLastName" id ="clientLastName" type="text" [(ngModel)]="clientLastName"/>
-    <label for="tableNumber" >Table number: </label>
-    <input ngModel required minlength="1" name="tableNumber" id ="tableNumber" type="number" [(ngModel)]="tableNumber"/>
+    <label for="clientFirstName">Client first name: </label>
+    <input ngModel required minlength="3" class="form-control" name="clientFirstName" id="clientFirstName" type="text"
+      [(ngModel)]="clientFirstName" />
+    <label for="clientLastName">Client last name: </label>
+    <input ngModel required minlength="3" class="form-control" aria-describedby="personalDataHelp" name="clientLastName"
+      id="clientLastName" type="text" [(ngModel)]="clientLastName" />
+    <small id="personalDataHelp" class="form-text text-muted">We'll never share your personal data with anyone
+      else.</small>
+    <div>
+      <label for="tableNumber">Table number: </label>
+    </div>
+    <input ngModel required minlength="1" class="form-control" name="tableNumber" id="tableNumber" type="number"
+      [(ngModel)]="tableNumber" />
   </div>
   <button class="btn btn-primary" (click)=displayOrders()>Show my orders</button>
 </form>
 
-<div ng-show="false" class="ng-hide"> <!-- Nie wiem jak schowac to gowno i otworzyc po kliknieciu przycisku-->
+<div ng-show="false" class="ng-hide">
+  <!-- Nie wiem jak schowac to gowno i otworzyc po kliknieciu przycisku-->
   <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Your orders</h3>
   <div class="card-body">
     <div id="table" class="table-editable">
@@ -39,24 +47,27 @@
           </td>
           <td>
             <span class="table-remove">
-              <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" (click)="remove(id)">Remove</button>
+              <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0"
+                (click)="remove(id)">Remove</button>
             </span>
           </td>
         </tr>
       </table>
     </div>
   </div>
-  <div>
-    <select  (change)="setSelectedOption($event.target.value)">
+  <div cclass="col-md-6 mb-6">
+    <select class="form-control" (change)="setSelectedOption($event.target.value)">
       <option disabled selected value> -- select an option -- </option>
       <option *ngFor='let dish of avaliableDishes'>{{dish.dishName}}</option>
     </select>
   </div>
-  <button type="button" class="btn btn-primary" (click)="addNewDish()">Add new dish</button>
-  <div>
-  <button type="button" class="btn btn-primary" (click)="modifyClientSingleOrder()">Modify order</button>
-  </div>
-  <div>
-    <button type="button" class="btn btn-primary" routerLink='/'>Go back</button>
+  <div class="form-row">
+    <button type="button" class="btn btn-primary" (click)="addNewDish()">Add new dish</button>
+    <div class="form-row">
+      <button type="button" class="btn btn-primary" (click)="modifyClientSingleOrder()">Modify order</button>
     </div>
+  </div>
+  <div class="form-row">
+    <button type="button" class="btn btn-primary" routerLink='/'>Go back</button>
+  </div>
 </div>

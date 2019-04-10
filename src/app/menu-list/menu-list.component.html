@@ -24,13 +24,10 @@
             </ng-template>
           </ng-container>
           <button class="orderButton" id="buttonId" mat-raised-button (click)="addToOrder(dish)">Add to order</button>
-          <br/><br/>
-          <button class="orderButton" id="buttonId" mat-raised-button (click)="removeFromOrder(dish)">Remove from order</button>
-          <!--<div class="countText">Count: 0</div>-->
         </mat-expansion-panel>
       </li>
     </ul>
   
-    <button mat-raised-button routerLink='/order'>Finalize order</button>
-    <button mat-raised-button routerLink='/orderModification'>Manage orders</button>
+    <button mat-raised-button class="btn btn-primary" routerLink='/order'>Finalize order</button>
+    <button mat-raised-button class="btn btn-primary" routerLink='/orderModification'>Manage orders</button>
   </div>

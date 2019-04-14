@@ -15,7 +15,7 @@ export class DataService {
   removeDishFromOrderUrl = 'http://localhost:8080/api/removeDishFromOrder';
   modifySingleOrderUrl = 'http://localhost:8080/api/modifySingleOrder';
   createNewDishUrl = 'http://localhost:8080/dictionaryApi/createDish';
-  deleteDishUrl = 'http://localhost:8080/dictionaryApi/removeDish/';
+  deleteDishUrl = 'http://localhost:8080/dictionaryApi/deleteDish/';
   modifyDishUrl = 'http://localhost:8080/dictionaryApi/modifyDish';
 
   private orderedDishes = new BehaviorSubject<Dish[]>([]);

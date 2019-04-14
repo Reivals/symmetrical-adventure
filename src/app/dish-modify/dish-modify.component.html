@@ -1,0 +1,78 @@
+<div class="jumbotron">
+  <h2>Modify dish</h2>
+</div>
+<form>
+  <div class="inner-container">
+    <div class="row">
+      <div class="column left">
+        <mat-form-field class="input-field">
+          <mat-label>
+            Choose dish
+          </mat-label>
+          <mat-select (selectionChange)="changeSelectedDish($event.source.value)">
+            <mat-option [value]="d.id" *ngFor="let d of dishes">{{d.dishName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="input-field">
+          <input matInput placeholder="Dish name" ngModel name="dishName" required minlength="3"
+            [(ngModel)]="dish && dish.dishName" /><br />
+        </mat-form-field>
+        <mat-form-field class="input-field">
+          <mat-label>
+            Dish type
+          </mat-label>
+          <mat-select ngModel name="type" required [(ngModel)]="type">
+            <mat-option [value]="0">Main course</mat-option>
+            <mat-option [value]="1">Soup</mat-option>
+            <mat-option [value]="2">Dessert</mat-option>
+            <mat-option [value]="3">Salad</mat-option>
+            <mat-option [value]="4">Hot drink</mat-option>
+            <mat-option [value]="5">Cold drink</mat-option>
+          </mat-select>
+        </mat-form-field><br />
+        <mat-form-field class="input-field">
+          <input placeholder="Dish cost" matInput type="number" min="0" ngModel name="cost" required minlength="1"
+            [(ngModel)]="dish && dish.cost" />
+        </mat-form-field><br />
+      </div>
+      <div class="column">
+        <h3>
+          Ingredients:
+        </h3>
+        <ul class="list">
+          <li>
+            <mat-form-field class="input-field">
+              <input matInput placeholder="Ingredient name" ngModel name="ingredientName" required minlength="3"
+                [(ngModel)]="dish && dish.ingredients && dish.ingredients[0].ingredientName" />
+            </mat-form-field>
+            <mat-form-field class="input-field">
+              <input matInput placeholder="Calories" type="number" ngModel name="calories" min="0" required
+                minlength="1" [(ngModel)]="dish && dish.ingredients[0].calories" />
+            </mat-form-field>
+            <button mat-mini-fab class="mat-primary" id="firstButtonId" (click)="addFirstListItem()">+</button>
+          </li>
+          <li *ngFor="let i of ingCount; let last = last">{{last ? callFunction() : ''}}
+            <mat-form-field class="input-field">
+              <input matInput placeholder="Ingredient name" ngModel name="ingredientName" required
+                minlength="3" [(ngModel)]="dish && dish.ingredients[i+1].ingredientName" />
+            </mat-form-field>
+            <mat-form-field class="input-field">
+              <input matInput placeholder="Calories" type="number" ngModel name="calories" min="0"
+                required minlength="1" [(ngModel)]="dish && dish.ingredients[i+1].calories" />
+            </mat-form-field>
+            <button mat-mini-fab class="mat-primary" (click)="addListItem()" [attr.id]="i">+</button>
+            <button mat-mini-fab class="mat-primary" (click)="removeListItem()" [attr.id]="'minus' + i">-</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="text-center">
+    <button mat-raised-button class="btn-margin btn-left" routerLink="/">
+      Go back
+    </button>
+    <button mat-raised-button class="btn-margin mat-primary" (click)="modifyDish()" routerLink="/">
+      Modify dish
+    </button>
+  </div>
+</form>

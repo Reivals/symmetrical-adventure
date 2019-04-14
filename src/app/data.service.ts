@@ -10,11 +10,13 @@ import { Ingredient } from './models/ingredient.model';
 })
 export class DataService {
   getAllDishesUrl = 'http://localhost:8080/api/getAllDishes';
-  createOrderUrl = 'http://localhost:8080/api/createNewOrder'
-  getClientOrderUrl = 'http://localhost:8080/api/getClientOrder'
-  removeDishFromOrderUrl = 'http://localhost:8080/api/removeDishFromOrder'
-  modifySingleOrderUrl = 'http://localhost:8080/api/modifySingleOrder'
-  createNewDishUrl = 'http://localhost:8080/dictionaryApi/createDish'
+  createOrderUrl = 'http://localhost:8080/api/createNewOrder';
+  getClientOrderUrl = 'http://localhost:8080/api/getClientOrder';
+  removeDishFromOrderUrl = 'http://localhost:8080/api/removeDishFromOrder';
+  modifySingleOrderUrl = 'http://localhost:8080/api/modifySingleOrder';
+  createNewDishUrl = 'http://localhost:8080/dictionaryApi/createDish';
+  deleteDishUrl = 'http://localhost:8080/dictionaryApi/removeDish/';
+  modifyDishUrl = 'http://localhost:8080/dictionaryApi/modifyDish';
 
   private orderedDishes = new BehaviorSubject<Dish[]>([]);
   currentOrderDishes = this.orderedDishes.asObservable();
@@ -78,6 +80,22 @@ export class DataService {
       ingredients
     }), options).subscribe(
       data => alert('Dish has been succesfully created!'),
+      error => console.log('An error has occurred while creating a dish!')
+    );
+  }
+
+  deleteDish(id: number) {
+    return this._http.delete(this.deleteDishUrl + id).subscribe(
+      data => alert('Dish has been successfully removed!'),
+      error => console.log('An error has occurred while deleting a dish!')
+    );
+  }
+
+  modifyDish(dish: Dish) {
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    const options = {headers};
+    return this._http.put(this.modifyDishUrl, JSON.stringify(dish), options).subscribe(
+      data => alert('Dish has been successfully modified!'),
       error => console.log('An error has occurred while creating a dish!')
     );
   }

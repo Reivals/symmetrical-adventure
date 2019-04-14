@@ -8,7 +8,7 @@
         <mat-expansion-panel class="singleDish">
           <mat-expansion-panel-header>
             <mat-panel-title>
-              <span class="badge" id="badgeId">{{dish.id}}</span>
+              <span class="badge" id="badgeId">{{j+1}}</span>
               <h2> {{dish.dishName}}</h2>
             </mat-panel-title>
           </mat-expansion-panel-header>
@@ -33,5 +33,5 @@
   
     <button mat-raised-button routerLink='/order'>Finalize order</button>
     <button mat-raised-button routerLink='/orderModification'>Manage orders</button>
-    <button mat-raised-button routerLink='/newDish'>New dish</button>
+    <button mat-raised-button routerLink='/newDish'>Manage dishes</button>
   </div>

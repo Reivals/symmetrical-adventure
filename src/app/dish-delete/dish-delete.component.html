@@ -1,0 +1,24 @@
+<div class="jumbotron">
+  <h2>Delete dish</h2>
+</div>
+<form>
+  <div class="inner-container">
+    <div class="row">
+      <div class="column left">
+        <mat-form-field>
+          <mat-select ngModel name="id" required [(ngModel)]="id">
+            <mat-option *ngFor="let dish of dishes" [value]="dish.id">{{dish.dishName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="column">
+        <button mat-raised-button class="btn-left" routerLink="/">
+          Go back
+        </button>
+        <button mat-raised-button class="mat-primary" (click)="deleteDish()" routerLink="/">
+          Delete dish
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

@@ -9,11 +9,12 @@ import { Ingredient } from './models/ingredient.model';
   providedIn: 'root'
 })
 export class DataService {
-  getAllDishesUrl = 'http://localhost:8080/api/getAllDishes';
-  createOrderUrl = 'http://localhost:8080/api/createNewOrder';
-  getClientOrderUrl = 'http://localhost:8080/api/getClientOrder';
-  removeDishFromOrderUrl = 'http://localhost:8080/api/removeDishFromOrder';
-  modifySingleOrderUrl = 'http://localhost:8080/api/modifySingleOrder';
+  begginingOfApiUlr='http://localhost:8080/api'
+  getAllDishesUrl = this.begginingOfApiUlr + '/getAllDishes';
+  createOrderUrl = this.begginingOfApiUlr + '/createNewOrder';
+  getClientOrderUrl = this.begginingOfApiUlr + '/getClientOrder';
+  removeDishFromOrderUrl = this.begginingOfApiUlr + '/removeDishFromOrder';
+  modifySingleOrderUrl = this.begginingOfApiUlr + '/modifySingleOrder';
   createNewDishUrl = 'http://localhost:8080/dictionaryApi/createDish';
   deleteDishUrl = 'http://localhost:8080/dictionaryApi/deleteDish/';
   modifyDishUrl = 'http://localhost:8080/dictionaryApi/modifyDish';
@@ -34,7 +35,7 @@ export class DataService {
   createSingleOrder(firstName, lastName, tableNumber, dishList){
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'});
-  let options = { headers: headers };
+    let options = { headers: headers };
 
     this._http.post(this.createOrderUrl, JSON.stringify({
       clientFirstName: firstName,

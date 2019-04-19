@@ -16,6 +16,7 @@ export class DishModifyComponent implements OnInit {
   type: number;
   ingCount: number[] = [];
   dish: Dish;
+  valueee: boolean = false;
 
   constructor(private dataService: DataService) { }
 
@@ -53,16 +54,29 @@ export class DishModifyComponent implements OnInit {
   }
 
   addFirstListItem() {
+    console.log(this.dish.ingredients)
     this.ingCount.push(0);
     this.dish.ingredients.push(new Ingredient());
     this.element('firstButtonId').classList.add('hidden');
+    console.log(this.dish.ingredients)
   }
 
   addListItem() {
+    console.log(this.dish.ingredients)
     this.element((this.ingCount.length - 1).toString()).classList.add('hidden');
     this.element('minus' + (this.ingCount.length - 1).toString()).classList.add('hidden');
-    this.ingCount.push(this.ingCount.length);
     this.dish.ingredients.push(new Ingredient());
+    this.ingCount.push(this.ingCount.length);
+    console.log(this.dish.ingredients)
+    console.log(this.ingCount)
+  }
+
+  addInitialItemToList(){
+    console.log("TUTAJJ")
+    var ing = new Ingredient();
+    ing.ingredientName= (<HTMLInputElement>document.getElementById("firstIngredientNameEmptyList")).value;
+    ing.calories = Number((<HTMLInputElement>document.getElementById("firstCaloryValueEmptyList")).value);
+    this.dish.ingredients.push(ing);
   }
 
   removeListItem() {

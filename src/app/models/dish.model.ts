@@ -3,7 +3,7 @@ import { Ingredient } from './ingredient.model';
 export class Dish {
     id: number;
     dishName: string;
-    ingredients: Ingredient[]; 
+    ingredients: Ingredient[] = []; 
     type: string;
     cost: number;
 }

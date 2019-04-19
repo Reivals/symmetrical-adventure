@@ -35,36 +35,53 @@
             [(ngModel)]="dish && dish.cost" />
         </mat-form-field><br />
       </div>
-      <div class="column">
+      <div class="column" *ngIf="dish?.ingredients?.length > 0 ; else displaySingleColumn">
         <h3>
           Ingredients:
         </h3>
         <ul class="list">
           <li>
             <mat-form-field class="input-field">
-              <input matInput placeholder="Ingredient name" ngModel name="ingredientName" required minlength="3"
+              <input matInput placeholder="Ingredient name" ngModel name="firstIngredientName" required minlength="3"
                 [(ngModel)]="dish && dish.ingredients && dish.ingredients[0].ingredientName" />
             </mat-form-field>
             <mat-form-field class="input-field">
-              <input matInput placeholder="Calories" type="number" ngModel name="calories" min="0" required
+              <input matInput placeholder="Calories" type="number" ngModel name="firstCaloryValue" min="0" required
                 minlength="1" [(ngModel)]="dish && dish.ingredients[0].calories" />
             </mat-form-field>
-            <button mat-mini-fab class="mat-primary" id="firstButtonId" (click)="addFirstListItem()">+</button>
+            <button mat-mini-fab class="mat-primary" id="firstButtonId" (click)="addFirstListItem()">+First</button>
           </li>
-          <li *ngFor="let i of ingCount; let last = last">{{last ? callFunction() : ''}}
+          <li *ngFor="let i of ingCount ; let last = last ">{{last ? callFunction() : ''}}
             <mat-form-field class="input-field">
-              <input matInput placeholder="Ingredient name" ngModel name="ingredientName" required
-                minlength="3" [(ngModel)]="dish && dish.ingredients[i+1].ingredientName" />
+              <input matInput placeholder="Ingredient name" name="x1" required minlength="3"
+                [(ngModel)]="dish && dish.ingredients[i+1].ingredientName" />
             </mat-form-field>
             <mat-form-field class="input-field">
-              <input matInput placeholder="Calories" type="number" ngModel name="calories" min="0"
-                required minlength="1" [(ngModel)]="dish && dish.ingredients[i+1].calories" />
+              <input matInput placeholder="Calories" name ="x2" type="number" min="0" required
+                minlength="1" [(ngModel)]="dish && dish.ingredients[i+1].calories" />
             </mat-form-field>
-            <button mat-mini-fab class="mat-primary" (click)="addListItem()" [attr.id]="i">+</button>
-            <button mat-mini-fab class="mat-primary" (click)="removeListItem()" [attr.id]="'minus' + i">-</button>
+            <button mat-mini-fab class="mat-primary" (click)="addListItem()" [attr.id]="i">+Second</button>
+            <button mat-mini-fab class="mat-primary" (click)="removeListItem()" [attr.id]="'minus' + i">-Second</button>
           </li>
         </ul>
       </div>
+      <ng-template #displaySingleColumn>
+          <h3>
+              Ingredientsdsffsfsd:
+            </h3>
+          <ul class="list">
+              <li>
+                <mat-form-field class="input-field">
+                  <input matInput placeholder="Ingredient name" ngModel id ="firstIngredientNameEmptyList" name="firstIngredientNameEmptyList" required minlength="3"/>
+                </mat-form-field>
+                <mat-form-field class="input-field">
+                  <input matInput placeholder="Calories" type="number" id ="firstCaloryValueEmptyList" ngModel name="firstCaloryValueEmptyList" min="0" required
+                    minlength="1"/>
+                </mat-form-field>
+                <button mat-mini-fab class="mat-primary" id="firstButtonId" (click)="addInitialItemToList()">+First</button>
+              </li>
+            </ul>
+      </ng-template>
     </div>
   </div>
   <div class="text-center">

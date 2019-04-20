@@ -33,6 +33,7 @@ export class OrdersListComponent implements OnInit {
     }, error => { // second parameter is to listen for error
       console.log("Invalid data passed");
       alert("There is no such order!");
+      this.clientOrder.dishList=[];
   });
   }
 

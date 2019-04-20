@@ -65,9 +65,9 @@ export class DishModifyComponent implements OnInit {
     console.log(this.dish.ingredients)
     this.element((this.ingCount.length - 1).toString()).classList.add('hidden');
     this.element('minus' + (this.ingCount.length - 1).toString()).classList.add('hidden');
-    this.dish.ingredients.push(new Ingredient());
     this.ingCount.push(this.ingCount.length);
-    console.log(this.dish.ingredients)
+    this.dish.ingredients.push(new Ingredient());
+    console.log(this.dish.ingredients[this.ingCount.length])
     console.log(this.ingCount)
   }
 
